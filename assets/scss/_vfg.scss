@@ -1,0 +1,12 @@
+.vue-form-generator {
+    .form-group.error input:not([type=checkbox]),
+    .form-group.error select,
+    .form-group.error textarea {
+        @extend .form-control.is-invalid;
+    }
+
+    .form-group.error .errors {
+        @extend .invalid-feedback;
+        display: block;
+    }
+}

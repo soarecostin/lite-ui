@@ -1,3 +1,4 @@
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -23,11 +24,15 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/app.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/globals.js',
+    '~/plugins/repository.js',
+    '~/plugins/vue-form-generator.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -42,16 +47,45 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
+    // ['@nuxtjs/bootstrap-vue', { css: false }],
     // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/dotenv',
     '@nuxtjs/axios',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/auth',
+    '@nuxtjs/toast'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:8000',
+    credentials: true
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'access_token' },
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: { url: '/api/auth/me', method: 'get', propertyName: 'user' }
+        }
+      }
+    },
+    redirect: {
+      login: '/auth/login',
+      logout: '/auth/login',
+      home: '/'
+    }
+  },
+  toast: {
+    position: 'bottom-right'
+  },
+  router: {
+    // middleware: ['auth']
+  },
+  bootstrapVue: {
+    icons: true
   },
   /*
   ** Build configuration

@@ -9,9 +9,12 @@ module.exports = {
   },
   extends: [
     '@nuxtjs',
-    'plugin:nuxt/recommended'
+    'plugin:nuxt/recommended',
   ],
   // add your custom rules here
   rules: {
+    'vue/require-default-prop': 'off',
+    'vue/html-self-closing': 'off',
+    'no-console': 0
   }
 }
