@@ -11,7 +11,7 @@
               {{ subscriber.email }}
             </h1>
             <p
-              :class="{'text-success': isActive, 'text-danger': isUnsubscribed, 'text-info': isUnconfirmed}"
+              :class="{'text-success': isActive, 'text-danger': isUnsubscribed, 'text-secondary': isUnconfirmed}"
               class="text-uppercase font-weight-bold"
             >
               {{ subscriber.state }}

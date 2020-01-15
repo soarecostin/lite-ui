@@ -15,6 +15,9 @@
         :has-search-filter="true"
         repository="subscribers"
       >
+        <template v-slot:cell(state)="data">
+          <b-icon :variant="stateIndicator(data.item.state)" icon="circle-fill"></b-icon>
+        </template>
         <template v-slot:cell(name)="data">
           <nuxt-link :to="`/subscribers/${data.item.id}`">
             {{ data.value }}
@@ -64,6 +67,12 @@ export default {
           sortable: true
         },
         {
+          key: 'state',
+          label: '',
+          sortable: false,
+          class: 'text-center'
+        },
+        {
           key: 'name',
           sortable: true
         },
@@ -108,6 +117,9 @@ export default {
         this.$toast.success('The subscriber was deleted!').goAway(5000)
         this.$root.$emit('bv::refresh::table', 'vue-table')
       })
+    },
+    stateIndicator (state) {
+      return state === 'Active' ? 'success' : (state === 'Unsubscribed' ? 'danger' : 'secondary')
     }
   }
 }
