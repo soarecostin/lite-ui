@@ -74,7 +74,7 @@ export default {
         {
           key: 'date_subscribe',
           label: 'Subscribed',
-          sortable: false
+          sortable: true
         },
         {
           key: 'actions',
