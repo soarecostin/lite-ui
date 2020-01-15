@@ -22,6 +22,7 @@
 <script>
 import SubscribersSubmenu from '~/components/submenus/SubscribersSubmenu'
 import SubscriberForm from '~/components/subscribers/SubscriberForm'
+import displaysErrors from '~/mixins/displaysErrors'
 import loadsFields from '~/mixins/loadsFields'
 import showsLoadingState from '~/mixins/showsLoadingState'
 
@@ -33,7 +34,8 @@ export default {
   },
   mixins: [
     loadsFields,
-    showsLoadingState
+    showsLoadingState,
+    displaysErrors
   ],
   data () {
     return {
@@ -56,7 +58,7 @@ export default {
         this.$router.push('/subscribers')
       }).catch((error) => {
         this.stopLoading()
-        this.$toast.error(error).goAway(5000)
+        this.displayErrors(error.response)
       })
     }
   }
