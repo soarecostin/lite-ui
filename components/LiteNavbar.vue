@@ -4,7 +4,7 @@
       <b-container>
         <b-navbar-toggle target="nav-collapse" />
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
+          <b-navbar-nav v-if="$auth.loggedIn">
             <b-nav-item to="/" active-class="active" exact>
               Dashboard
             </b-nav-item>
