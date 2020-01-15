@@ -72,7 +72,8 @@ export default {
           sortable: true
         },
         {
-          key: 'subscribed',
+          key: 'date_subscribe',
+          label: 'Subscribed',
           sortable: false
         },
         {
