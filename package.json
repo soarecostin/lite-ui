@@ -22,7 +22,7 @@
     "bootstrap-vue": "^2.0.0",
     "cleave.js": "^1.5.3",
     "nuxt": "^2.0.0",
-    "qs": "^6.9.1",
+    "qs": "^6.9.7",
     "vue-form-generator": "^2.3.4"
   },
   "devDependencies": {
